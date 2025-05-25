@@ -1,0 +1,5 @@
+# Copyright (c) 2025 Space Cubics, LLC.
+# SPDX-License-Identifier: Apache-2.0
+
+config SHIELD_SCOBC_A1_DEVKIT
+	def_bool $(shields_list_contains,scobc_a1_devkit)
