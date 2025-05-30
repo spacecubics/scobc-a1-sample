@@ -1,2 +1,24 @@
+#include <zephyr/dt-bindings/gpio/gpio.h>
+
 / {
+	aliases {
+		led0 = &user_led_0;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		user_led_0: led_0 {
+			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	soc {
+		gpio0: gpio@50090000 {
+			compatible = "xlnx,xps-gpio-1.00.a";
+			interrupts = <25 0>;
+			reg = <0x50090000 0x10000>;
+			gpio-controller;
+			#gpio-cells = <2>;
+		};
+	};
 };
