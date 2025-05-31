@@ -1,0 +1,23 @@
+# Copyright (c) 2025 Space Cubics Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SC_SYSMON
+	bool "Space Cubics System Monitor driver"
+	default y
+	depends on DT_HAS_SC_SYSMON_ENABLED
+	help
+	  Enable Space Cubics System Monitor driver.
+
+if SC_SYSMON
+
+config SC_SYSMON_INIT_PRIORITY
+	int "Init priority"
+	default 50
+	help
+	   Space Cubics System Monitor driver initialization priority.
+
+module = SC_SYSMON
+module-str = Space Cubics System Monitor driver
+source "subsys/logging/Kconfig.template.log_config"
+
+endif
