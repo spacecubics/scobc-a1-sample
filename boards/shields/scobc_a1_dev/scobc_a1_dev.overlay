@@ -24,6 +24,42 @@
 	};
 
 	soc {
+		uartlite1: uartlite@50000000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <16 0>;
+			reg = <0x50000000 0x10000>;
+		};
+
+		uartlite2: uartlite@50010000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <17 0>;
+			reg = <0x50010000 0x10000>;
+		};
+
+		uartlite3: uartlite@50020000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <18 0>;
+			reg = <0x50020000 0x10000>;
+		};
+
+		uartlite4: uartlite@50030000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <19 0>;
+			reg = <0x50030000 0x10000>;
+		};
+
+		uartlite5: uartlite@50040000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <20 0>;
+			reg = <0x50040000 0x10000>;
+		};
+
+		uartlite6: uartlite@50050000 {
+			compatible = "xlnx,xps-uartlite-1.00.a";
+			interrupts = <21 0>;
+			reg = <0x50050000 0x10000>;
+		};
+
 		gpio0: gpio@50090000 {
 			compatible = "xlnx,xps-gpio-1.00.a";
 			interrupts = <25 0>;
