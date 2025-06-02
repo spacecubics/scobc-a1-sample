@@ -14,6 +14,7 @@ jobs:
         target:
           - zephyr/samples/hello_world
           - zephyr/samples/basic/blinky
+          - scobc-a1-sample/samples/hello_world
         python-version:
           - '3.10'
           - '3.11'
