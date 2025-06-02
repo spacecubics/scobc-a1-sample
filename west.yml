@@ -2,8 +2,8 @@ manifest:
 
   projects:
     - name: zephyr
-      url: https://github.com/zephyrproject-rtos/zephyr
-      revision: main
+      url: https://github.com/sasataku/zephyr.git
+      revision: update-board-info-for-scobc-a1
       path: zephyr
       west-commands: scripts/west-commands.yml
       import:
