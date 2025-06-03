@@ -3,6 +3,10 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
+	chosen {
+		zephyr,canbus = &can0;
+	};
+
 	aliases {
 		led0 = &user_led_0;
 		sw0 = &user_sw_0;
@@ -93,6 +97,21 @@
 			#address-cells = <1>;
 			#size-cells = <0>;
 			clock-frequency = <I2C_BITRATE_STANDARD>;
+		};
+
+		can0: can@40400000 {
+			compatible = "sc,can";
+			clock-frequency = <24000000>;
+			interrupts = <5 0>;
+			reg = <0x40400000 0x10000>;
+			bitrate = <1000000>;
+			sample-point = <750>;
+			tx-fifo-depth = <64>;
+			max-filter = <4>;
+
+			can-transceiver {
+				max-bitrate = <1000000>;
+			};
 		};
 	};
 };

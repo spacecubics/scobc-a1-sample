@@ -1,0 +1,35 @@
+description: Space Cubics CAN controller
+
+compatible: "sc,can"
+
+include: [can-controller.yaml]
+
+properties:
+  reg:
+    required: true
+
+  interrupts:
+    required: true
+
+  sample-point:
+    required: true
+
+  clock-frequency:
+    type: int
+    description: |
+      CAN Clock frequency on the FPGA. Basicaly the CAN clock is
+      always 24 MHz, irrespective of the frequency of the system
+      clock.
+    required: true
+
+  tx-fifo-depth:
+    type: int
+    description: TX FIFO Depath on FPGA
+    required: true
+
+  max-filter:
+    type: int
+    description: |
+      The maximum value for the Acceptance (RX) Filter that can be
+      configured on the FPGA.
+    required: true
