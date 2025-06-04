@@ -1,14 +1,25 @@
 #include <zephyr/dt-bindings/gpio/gpio.h>
+#include <zephyr/dt-bindings/i2c/i2c.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
 	aliases {
 		led0 = &user_led_0;
+		sw0 = &user_sw_0;
 	};
 
 	leds {
 		compatible = "gpio-leds";
 		user_led_0: led_0 {
 			gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
+		};
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		user_sw_0: sw_0 {
+			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
+			zephyr,code = <INPUT_KEY_0>;
 		};
 	};
 
