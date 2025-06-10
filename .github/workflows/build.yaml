@@ -16,6 +16,8 @@ jobs:
           - zephyr/samples/basic/blinky
           - scobc-a1-sample/samples/hello_world
           - scobc-a1-sample/samples/blinky
+          - scobc-a1-sample/samples/sysmon
+          - scobc-a1-sample/samples/i2c
         python-version:
           - '3.10'
           - '3.11'
