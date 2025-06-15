@@ -2,8 +2,8 @@ manifest:
 
   projects:
     - name: zephyr
-      url: https://github.com/zephyrproject-rtos/zephyr
-      revision: main
+      url: https://github.com/spacecubics/zephyr.git
+      revision: support-west-flash-to-nor
       path: zephyr
       west-commands: scripts/west-commands.yml
       import:
