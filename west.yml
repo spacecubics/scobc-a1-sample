@@ -10,3 +10,8 @@ manifest:
         name-allowlist:
           - cmsis
           - cmsis_6
+
+    - name: openocd
+      url: https://github.com/spacecubics/openocd.git
+      revision: release-scobc-a1-openocd
+      path: modules/tools/openocd
