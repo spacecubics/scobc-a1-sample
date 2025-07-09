@@ -113,5 +113,16 @@
 				max-bitrate = <1000000>;
 			};
 		};
+
+		spi0: spi@50080000 {
+			compatible = "xlnx,xps-spi-2.00.a";
+			reg = <0x50080000 0x10000>;
+			interrupts = <24 0>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			xlnx,num-ss-bits = <0x3>;
+			xlnx,num-transfer-bits = <0x8>;
+		};
 	};
 };
