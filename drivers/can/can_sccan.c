@@ -1091,7 +1091,7 @@ static int sc_can_get_max_filters(const struct device *dev, bool ide)
 	return config->max_filter;
 }
 
-static const struct can_driver_api sc_can_driver_api = {
+static DEVICE_API(can, sc_can_driver_api) = {
 	.get_capabilities = sc_can_get_capabilities,
 	.start = sc_can_start,
 	.stop = sc_can_stop,
