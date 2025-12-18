@@ -4,3 +4,4 @@
 rsource "drivers/misc/sc_fpga/Kconfig"
 rsource "drivers/i2c/Kconfig"
 rsource "drivers/can/Kconfig"
+rsource "drivers/flash/Kconfig"
