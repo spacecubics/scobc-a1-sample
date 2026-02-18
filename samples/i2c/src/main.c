@@ -19,7 +19,7 @@ int main(void)
 
 	if (!device_is_ready(i2c)) {
 		printf("I2C device is not ready\n");
-		ret = -1;
+		ret = -ENODEV;
 		goto end;
 	}
 
