@@ -9,7 +9,7 @@
 
 	aliases {
 		led0 = &user_led_0;
-		sw0 = &user_sw_0;
+		sw1 = &user_sw_1;
 	};
 
 	leds {
@@ -21,7 +21,7 @@
 
 	buttons {
 		compatible = "gpio-keys";
-		user_sw_0: sw_0 {
+		user_sw_1: sw_1 {
 			gpios = <&gpio0 14 GPIO_ACTIVE_LOW>;
 			zephyr,code = <INPUT_KEY_0>;
 		};
