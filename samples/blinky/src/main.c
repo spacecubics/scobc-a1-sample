@@ -14,20 +14,21 @@ int main(void)
 
 	if (!gpio_is_ready_dt(&led)) {
 		printf("GPIO device is not ready\n");
-		return -1;
+		ret = -ENODEV;
+		goto end;
 	}
 
 	ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
 	if (ret < 0) {
 		printf("Failed to configure a GPIO pin (%d)\n", ret);
-		return -1;
+		goto end;
 	}
 
 	while (true) {
 		ret = gpio_pin_toggle_dt(&led);
 		if (ret < 0) {
 			printf("Failed to toggle a GPIO pin (%d)\n", ret);
-			return -1;
+			goto end;
 		}
 
 		led_state = !led_state;
@@ -35,5 +36,6 @@ int main(void)
 		k_sleep(K_SECONDS(1));
 	}
 
-	return 0;
+end:
+	return ret;
 }
