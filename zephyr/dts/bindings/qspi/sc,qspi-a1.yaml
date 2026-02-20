@@ -1,0 +1,34 @@
+# Copyright (c) 2025 Space Cubics Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+description: Space Cubics SC-OBC Module A1 QSPI Controller
+
+compatible: "sc,qspi-a1"
+
+include: base.yaml
+
+properties:
+  reg:
+    description: QSPI controller register base address and size
+    required: true
+
+  interrupts:
+    description: QSPI interrupt specifier (IRQ, priority)
+    required: true
+
+  cpol:
+    type: int
+    description: Clock Polarity in SPI
+    required: true
+
+  cpha:
+    type: int
+    description: Clock Phase in SPI
+    required: true
+
+  spiclk-div:
+    type: int
+    description: Clock divider for the SPI clock relative to the system clock
+    required: true
+
+bus: qspi
