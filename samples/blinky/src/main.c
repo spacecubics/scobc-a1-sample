@@ -10,7 +10,7 @@ int main(void)
 {
 	int ret;
 	const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(led0), gpios);
-	bool led_state = true;
+	int led_state = 0;
 
 	if (!gpio_is_ready_dt(&led)) {
 		printf("GPIO device is not ready\n");
@@ -31,7 +31,11 @@ int main(void)
 			goto end;
 		}
 
-		led_state = !led_state;
+		led_state = gpio_pin_get_dt(&led);
+		if (led_state < 0) {
+			printf("Failed to read GPIO state (%d)\n", led_state);
+			goto end;
+		}
 		printf("LED state: %s\n", led_state ? "ON" : "OFF");
 		k_sleep(K_SECONDS(1));
 	}
