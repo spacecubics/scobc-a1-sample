@@ -28,7 +28,7 @@ int main(void)
 			printf("Failed to get the on Board Temperature 1: %d\n", ret);
 			goto end;
 		}
-		printf("On Board Tempareture 1 : %.4f [deg]\n", (double)temp);
+		printf("On Board Temperature 1 : %.4f [deg]\n", (double)temp);
 
 		ret = sc_bhm_get_obc_cv(SCOBC_A1_3V3_BUS, &bus);
 		if (ret < 0) {
