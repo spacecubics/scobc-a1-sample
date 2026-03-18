@@ -35,7 +35,7 @@ int main(void)
 			printf("Failed to get the 3V3SYS Bus voltage: %d\n", ret);
 			goto end;
 		}
-		printf("3V3SYS Bus voltage     : %d [mv]\n", bus);
+		printf("3V3SYS Bus voltage     : %d [mV]\n", bus);
 
 		k_sleep(K_SECONDS(1));
 	}
