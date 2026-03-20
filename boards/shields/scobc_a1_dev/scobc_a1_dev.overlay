@@ -124,5 +124,81 @@
 			xlnx,num-ss-bits = <0x3>;
 			xlnx,num-transfer-bits = <0x8>;
 		};
+
+		qspi_cfg: qspi@40000000 {
+			compatible = "sc,qspi-a1";
+			reg = <0x40000000 0x1000>;
+			interrupts = <2 0>;
+			cpol = <0>;
+			cpha = <0>;
+			spiclk-div = <0>;
+			status = "okay";
+
+			cfg_flash0: cfgmem0 {
+				compatible = "sc,qspi-nor-a1";
+				mem-no = <0>;
+				size = <DT_SIZE_M(32)>;
+				jedec-id = [01 60 19];
+				sc-sysreg = <&sysreg>;
+				status = "okay";
+			};
+
+			cfg_flash1: cfgmem1 {
+				compatible = "sc,qspi-nor-a1";
+				mem-no = <1>;
+				size = <DT_SIZE_M(32)>;
+				jedec-id = [01 60 19];
+				sc-sysreg = <&sysreg>;
+				status = "okay";
+			};
+		};
+
+		qspi_data: qspi@40100000 {
+			compatible = "sc,qspi-a1";
+			reg = <0x40100000 0x1000>;
+			interrupts = <3 0>;
+			cpol = <0>;
+			cpha = <0>;
+			spiclk-div = <0>;
+			status = "okay";
+
+			data_flash0: flash0 {
+				compatible = "sc,qspi-nor-a1";
+				mem-no = <0>;
+				size = <DT_SIZE_M(32)>;
+				jedec-id = [01 60 19];
+				status = "okay";
+
+				partitions {
+					compatible = "fixed-partitions";
+					#address-cells = <1>;
+					#size-cells = <1>;
+
+					storage_partition: partition@0 {
+						label = "storage";
+						reg = <0x0 DT_SIZE_M(32)>;
+					};
+				};
+			};
+
+			data_flash1: flash1 {
+				compatible = "sc,qspi-nor-a1";
+				mem-no = <1>;
+				size = <DT_SIZE_M(32)>;
+				jedec-id = [01 60 19];
+				status = "okay";
+
+				partitions {
+					compatible = "fixed-partitions";
+					#address-cells = <1>;
+					#size-cells = <1>;
+
+					storage_partition1: partition@0 {
+						label = "storage1";
+						reg = <0x0 DT_SIZE_M(32)>;
+					};
+				};
+			};
+		};
 	};
 };
