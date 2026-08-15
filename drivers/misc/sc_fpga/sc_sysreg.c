@@ -6,7 +6,7 @@
 
 #define DT_DRV_COMPAT sc_sysreg
 
-#include "sc_fpgasys.h"
+#include "sc_sysreg.h"
 
 #include <zephyr/devicetree.h>
 #include <zephyr/init.h>
@@ -14,7 +14,7 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/sys/sys_io.h>
 
-LOG_MODULE_REGISTER(sc_fpgasys, CONFIG_SC_FPGASYS_LOG_LEVEL);
+LOG_MODULE_REGISTER(sc_sysreg, CONFIG_SC_FPGASYS_LOG_LEVEL);
 
 #define SCOBCA1_SYSREG_BASE DT_INST_REG_ADDR(0)
 
@@ -107,9 +107,9 @@ bool sc_is_fallback(void)
 	return (sc_get_bootsts() & BOOTSTS_FALLBACK) != 0;
 }
 
-static int sc_fpgasys_init(void)
+static int sc_sysreg_init(void)
 {
 	return 0;
 }
 
-SYS_INIT(sc_fpgasys_init, POST_KERNEL, CONFIG_SC_FPGASYS_INIT_PRIORITY);
+SYS_INIT(sc_sysreg_init, POST_KERNEL, CONFIG_SC_FPGASYS_INIT_PRIORITY);
