@@ -27,5 +27,6 @@ enum sc_cfgmem sc_get_boot_cfgmem(void);
 enum sc_cfgmem sc_get_cfgmem(void);
 int sc_select_cfgmem(enum sc_cfgmem mem);
 void sc_select_codemem(enum sc_codemem mem);
+void sc_power_cycle(void);
 uint32_t sc_get_bootsts(void);
 bool sc_is_fallback(void);
