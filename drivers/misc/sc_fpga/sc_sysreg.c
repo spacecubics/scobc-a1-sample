@@ -27,10 +27,11 @@ LOG_MODULE_REGISTER(sc_sysreg, CONFIG_SC_FPGASYS_LOG_LEVEL);
 #define SCOBCA1_SYSREG_DNA1      (SCOBCA1_SYSREG_BASE + 0xFF10)
 #define SCOBCA1_SYSREG_DNA2      (SCOBCA1_SYSREG_BASE + 0xFF14)
 
-#define SCOBCA1_SYSREG_CFGBOOTMEM(x) (((x) & BIT(12)) >> 12)
-#define SCOBCA1_SYSREG_CFGMEMSEL(x)  (((x) & BIT(0)) << 4)
-#define SCOBCA1_SYSREG_CFGMEMMON(x)  (((x) & BIT(5)) >> 5)
-#define SCOBCA1_SYSREG_PWRCYCLEREQ   BIT(0)
+#define SCOBCA1_SYSREG_CFGBOOTMEM(x)   (((x) & BIT(12)) >> 12)
+#define SCOBCA1_SYSREG_CFGMEMSEL(x)    (((x) & BIT(0)) << 4)
+#define SCOBCA1_SYSREG_CFGMEMOWNER_REG (0U)
+#define SCOBCA1_SYSREG_CFGMEMMON(x)    (((x) & BIT(5)) >> 5)
+#define SCOBCA1_SYSREG_PWRCYCLEREQ     BIT(0)
 
 #define SCOBCA1_SYSREG_MAGIC (0x5A5A0000)
 
@@ -57,7 +58,8 @@ int sc_select_cfgmem(enum sc_cfgmem mem)
 		return -EINVAL;
 	}
 
-	sys_write32(SCOBCA1_SYSREG_CFGMEMSEL(mem), SCOBCA1_SYSREG_CFGMEMCTL);
+	sys_write32(SCOBCA1_SYSREG_CFGMEMOWNER_REG | SCOBCA1_SYSREG_CFGMEMSEL(mem),
+		    SCOBCA1_SYSREG_CFGMEMCTL);
 
 	while (true) {
 		if (sc_get_cfgmem() == mem) {
