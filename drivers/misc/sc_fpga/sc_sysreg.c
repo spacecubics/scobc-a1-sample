@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Space Cubics, LLC.
+ * Copyright (c) 2024, 2026 Space Cubics Inc.
  *
  * SPDX-License-Identifier: Apache-2.0
  */
