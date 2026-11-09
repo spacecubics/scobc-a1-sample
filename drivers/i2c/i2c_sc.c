@@ -340,7 +340,8 @@ static DEVICE_API(i2c, i2c_sc_driver_api) = {
 				  POST_KERNEL, CONFIG_I2C_INIT_PRIORITY, &i2c_sc_driver_api);      \
 	static void i2c_sc_##n##_irq_init(const struct device *dev)                                \
 	{                                                                                          \
-		IRQ_CONNECT(DT_INST_IRQN(n), 0, i2c_sc_isr, DEVICE_DT_INST_GET(n), 0);             \
+		IRQ_CONNECT(DT_INST_IRQN(n), DT_INST_IRQ(n, priority), i2c_sc_isr,                 \
+			    DEVICE_DT_INST_GET(n), 0);                                             \
                                                                                                    \
 		irq_enable(DT_INST_IRQN(n));                                                       \
 	}
