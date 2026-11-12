@@ -1,0 +1,52 @@
+# Copyright (c) 2025 Space Cubics Inc.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+    Space Cubics SC-OBC Module A1 QSPI NOR Flash Controller
+
+    Representation of a serial flash on a quadspi bus:
+
+        qspi: qspi@40100000 {
+            compatible = "sc,qspi-a1";
+            reg = <0x40100000 0x1000>;
+            interrupts = <3 0>;
+            cpol = <0>;
+            cpha = <0>;
+            spiclk-div = <0>;
+            status = "okay";
+
+            data_flash0: flash0 {
+                compatible = "sc,qspi-nor-a1";
+                mem-no = <0>;
+                size = <DT_SIZE_M(32)>;
+                jedec-id = [01 60 19];
+                status = "okay";
+            };
+        };
+
+compatible: "sc,qspi-nor-a1"
+
+include: ["jedec,jesd216.yaml"]
+
+on-bus: qspi
+
+properties:
+  mem-no:
+    type: int
+    description: NOR Flash memory number (0 or 1).
+    required: true
+
+  size:
+    description: Flash Memory size in octets
+    required: true
+
+  jedec-id:
+    type: uint8-array
+    description: 3-byte JEDEC ID of the NOR flash
+    required: true
+
+  sc-sysreg:
+    type: phandle
+    description: |
+      Reference to the system register node (sysreg).
+      Required if configuration memory, it's used to handle memory selection.
